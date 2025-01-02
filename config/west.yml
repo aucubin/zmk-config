@@ -4,6 +4,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: kilipan
       url-base: https://github.com/kilipan
+    - name: sadekbaroudi
+      url-base: https://github.com/sadekbaroudi
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
@@ -14,5 +16,9 @@ manifest:
     - name: zmk-keyboards-zilpzalp
       remote: kilipan
       revision: main
+    - name: zmk-fingerpunch-keyboards
+      remote: sadekbaroudi
+      revision: main
+      import: config/deps.yml
   self:
     path: config
