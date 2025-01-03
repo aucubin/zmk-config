@@ -81,7 +81,7 @@
             bindings = <
     &none          &none        &none       &none         &none                                       &kp RBKT        &kp RBRC     &kp RPAR     &none       &kp PIPE
     &kp GRAVE      &kp TILDE    &kp UNDER   &kp EQUAL     &none                                       &kp LBKT        &kp LBRC     &kp LPAR     &none       &kp BLSH
-    &none          &none        &kp PLUS    &kp MINUS     &none                                       &none           &none        &kp COLON    &kp DQT     &kp SQT
+    &none          &none        &kp PLUS    &kp MINUS     &none                                       &umlaut         &eszett      &kp COLON    &kp DQT     &kp SQT
                                 &trans      &trans        &trans                                      &trans          &trans       &trans
             >;
         };
