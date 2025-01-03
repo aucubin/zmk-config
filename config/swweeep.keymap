@@ -60,7 +60,7 @@
             bindings = <
     &none          &none        &none       &none         &none                                       &kp RBKT        &kp RBRC     &kp RPAR     &none       &kp PIPE
     &kp GRAVE      &kp TILDE    &kp UNDER   &kp EQUAL     &none                                       &kp LBKT        &kp LBRC     &kp LPAR     &none       &kp BSLH
-    &none          &none        &kp PLUS    &kp MINUS     &none                                       &kp LS(U)       &kp LS(S)    &kp COLON    &kp DQT     &kp SQT
+    &none          &none        &kp PLUS    &kp MINUS     &none                                       &kp LA(U)       &kp LA(S)    &kp COLON    &kp DQT     &kp SQT
                                 &trans      &trans        &trans                                      &trans          &trans       &trans
             >;
         };
