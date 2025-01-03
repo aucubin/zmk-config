@@ -25,27 +25,6 @@
         };
     };
 
-    macros {
-        umlaut: umlaut {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp U>
-                , <&macro_release &kp LSHFT>
-                ;
-        };
-        eszett: ezsett {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&macro_press &kp LSHFT>
-                , <&macro_tap &kp S>
-                , <&macro_release &kp LSHFT>
-                ;
-        };
-    };
-
     combos {
         compatible = "zmk,combos";
         combo_zoom_in {
@@ -81,7 +60,7 @@
             bindings = <
     &none          &none        &none       &none         &none                                       &kp RBKT        &kp RBRC     &kp RPAR     &none       &kp PIPE
     &kp GRAVE      &kp TILDE    &kp UNDER   &kp EQUAL     &none                                       &kp LBKT        &kp LBRC     &kp LPAR     &none       &kp BLSH
-    &none          &none        &kp PLUS    &kp MINUS     &none                                       &umlaut         &eszett      &kp COLON    &kp DQT     &kp SQT
+    &none          &none        &kp PLUS    &kp MINUS     &none                                       &kp LS(U)       &kp LS(S)    &kp COLON    &kp DQT     &kp SQT
                                 &trans      &trans        &trans                                      &trans          &trans       &trans
             >;
         };
