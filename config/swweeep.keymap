@@ -59,8 +59,8 @@
 
         sym_layer {
             bindings = <
-    &bootloader    &none        &none       &none         &none                                       &kp RBKT        &kp RBRC     &kp RPAR     &LS(RA(DQT))       &kp PIPE
-    &kp GRAVE      &kp TILDE    &kp UNDER   &kp EQUAL     &none                                       &kp LBKT        &kp LBRC     &kp LPAR     &RA(S)       &kp BSLH
+    &bootloader    &none        &none       &none         &none                                       &kp RBKT        &kp RBRC     &kp RPAR     &kp LS(RA(DQT))       &kp PIPE
+    &kp GRAVE      &kp TILDE    &kp UNDER   &kp EQUAL     &none                                       &kp LBKT        &kp LBRC     &kp LPAR     &kp RA(S)       &kp BSLH
     &sys_reset     &none        &kp PLUS    &kp MINUS     &none                                       &kp LA(U)       &kp LA(S)    &kp COLON    &kp DQT     &kp SQT
                                 &trans      &trans        &trans                                      &trans          &trans       &trans
             >;
