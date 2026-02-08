@@ -4,11 +4,13 @@
 #include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/outputs.h>
 
-#define ALPHA 0
-#define SYM 1
+#define ALPHA_MAC 0
+#define SYM_MAC 1
 #define NUM 2
 #define NAV 3
 #define BT 4
+#define ALPHA_LIN 5
+#define SYM_LIN 6
 
 &caps_word {
     continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
@@ -45,28 +47,47 @@
         };
     };
 
+    macros {
+        bt_macro_mac: bt_macro_mac {
+            label = "bt_macro_mac_0";
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&to ALPHA_MAC>,  <&bt BT_SEL MACRO_PLACEHOLDER>;
+        };
+        bt_macro_linux: bt_macro_linux {
+            label = "bt_macro_linux";
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&to ALPHA_LINUX>,  <&bt BT_SEL MACRO_PLACEHOLDER>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+    default_layer_mac {
             bindings = <
     &kp Q          &kp W        &kp F       &kp P         &kp B                                       &kp J           &kp L        &kp U         &kp Y       &kp SEMI
     &hm LCTL A     &hm LALT R   &hm LGUI S  &hm LSHIFT T  &kp G                                       &kp M           &hm RSHIFT N &hm RGUI E    &hm RALT I  &hm RCTL O
     &kp Z          &kp X        &kp C       &kp D         &kp V                                       &kp K           &kp H        &kp COMMA     &kp DOT     &kp FSLH
-                                &lt BT ESC  &mo SYM       &kp TAB                                     &lt NAV SPACE   &lt NUM BSPC &kp ENTER
+                                &lt BT ESC  &mo SYM_MAC   &kp TAB                                     &lt NAV SPACE   &lt NUM BSPC &kp ENTER
             >;
         };
 
-        sym_layer {
+    sym_layer_mac {
             bindings = <
-    &bootloader    &none        &none       &none         &none                                       &kp RBKT        &kp RBRC     &kp RPAR     &kp LS(RA(DQT))       &kp PIPE
-    &kp GRAVE      &kp TILDE    &kp UNDER   &kp EQUAL     &none                                       &kp LBKT        &kp LBRC     &kp LPAR     &kp RA(S)       &kp BSLH
+    &bootloader    &none        &none       &none         &none                                       &kp RBKT        &kp RBRC     &kp RPAR     &none       &kp PIPE
+    &kp GRAVE      &kp TILDE    &kp UNDER   &kp EQUAL     &none                                       &kp LBKT        &kp LBRC     &kp LPAR     &none       &kp BSLH
     &sys_reset     &none        &kp PLUS    &kp MINUS     &none                                       &kp LA(U)       &kp LA(S)    &kp COLON    &kp DQT     &kp SQT
                                 &trans      &trans        &trans                                      &trans          &trans       &trans
             >;
         };
 
-        num_layer {
+    num_layer {
             bindings = <
     &kp EXCL      &kp AT        &kp HASH   &kp DOLLAR     &kp PERCENT                                 &kp CARET       &kp AMPS     &kp STAR    &kp PIPE     &trans
     &kp N1        &kp N2        &kp N3     &kp N4         &kp N5                                      &kp N6          &kp N7       &kp N8      &kp N9       &kp N0
@@ -75,7 +96,7 @@
             >;
         };
 
-        nav_layer {
+    nav_layer {
             bindings = <
     &none        &kp F1        &kp F4     &kp F7         &kp F10                                      &bootloader     &kp HOME     &kp UP      &kp END      &none
     &none        &kp F2        &kp F5     &kp F8         &kp F11                                      &sys_reset      &kp LEFT     &kp DOWN    &kp RIGHT    &none
@@ -84,13 +105,31 @@
             >;
         };
 
-        bt_layer {
+    bt_layer {
             bindings = <
-    &bt BT_CLR   &none         &none      &bt BT_SEL 4   &bt BT_SEL 2                                 &none           &none        &none       &none        &none
-    &bt BT_NXT   &none         &none      &bt BT_SEL 3   &bt BT_SEL 1                                 &none           &none        &none       &none        &none
-    &bt BT_PRV   &none         &none      &none          &bt BT_SEL 0                                 &none           &none        &none       &none        &none
+    &bt BT_CLR   &none         &none      &bt BT_SEL 4   &bt_macro_linux 2                            &none           &none        &none       &none        &none
+    &bt BT_NXT   &none         &none      &bt BT_SEL 3   &bt_macro_mac 1                              &none           &none        &none       &none        &none
+    &bt BT_PRV   &none         &none      &none          &bt_macro_mac 0                              &none           &none        &none       &none        &none
                                &trans     &trans         &trans                                       &trans          &trans       &trans   
             >;
         };
+    };
+
+    default_layer_linux {
+            bindings = <
+    &kp Q          &kp W        &kp F       &kp P         &kp B                                       &kp J           &kp L        &kp U         &kp Y       &kp SEMI
+    &hm LCTL A     &hm LALT R   &hm LGUI S  &hm LSHIFT T  &kp G                                       &kp M           &hm RSHIFT N &hm RGUI E    &hm RALT I  &hm RCTL O
+    &kp Z          &kp X        &kp C       &kp D         &kp V                                       &kp K           &kp H        &kp COMMA     &kp DOT     &kp FSLH
+                                &lt BT ESC  &mo SYM_LIN   &kp TAB                                     &lt NAV SPACE   &lt NUM BSPC &kp ENTER
+            >;
+    };
+
+    sym_layer_linux {
+            bindings = <
+    &bootloader    &none        &none       &none         &none                                       &kp RBKT        &kp RBRC     &kp RPAR     &none       &kp PIPE
+    &kp GRAVE      &kp TILDE    &kp UNDER   &kp EQUAL     &none                                       &kp LBKT        &kp LBRC     &kp LPAR     &none       &kp BSLH
+    &sys_reset     &none        &kp PLUS    &kp MINUS     &none                                       &kp LS(RA(DQT)) &kp RA(S)    &kp COLON    &kp DQT     &kp SQT
+                                &trans      &trans        &trans                                      &trans          &trans       &trans
+            >;
     };
 };
