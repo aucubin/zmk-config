@@ -5,12 +5,12 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #define ALPHA_MAC 0
-#define SYM_MAC 1
-#define NUM 2
-#define NAV 3
-#define BT 4
-#define ALPHA_LIN 5
-#define SYM_LIN 6
+#define ALPHA_LIN 1
+#define SYM_MAC 2
+#define SYM_LIN 3
+#define NUM 4
+#define NAV 5
+#define BT 6
 
 &caps_word {
     continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
@@ -54,7 +54,7 @@
             #binding-cells = <1>;
             wait-ms = <0>;
             tap-ms = <0>;
-            bindings = <&to ALPHA_MAC>,  <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;
+            bindings = <&tog ALPHA_MAC>,  <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;
         };
         bt_macro_linux: bt_macro_linux {
             label = "bt_macro_linux";
@@ -62,7 +62,7 @@
             #binding-cells = <1>;
             wait-ms = <0>;
             tap-ms = <0>;
-            bindings = <&to ALPHA_LIN>,  <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;
+            bindings = <&tog ALPHA_LIN>,  <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;
         };
     };
 
@@ -78,6 +78,15 @@
             >;
         };
 
+    default_layer_linux {
+            bindings = <
+    &kp Q          &kp W        &kp F       &kp P         &kp B                                       &kp J           &kp L        &kp U         &kp Y       &kp SEMI
+    &hm LCTL A     &hm LALT R   &hm LGUI S  &hm LSHIFT T  &kp G                                       &kp M           &hm RSHIFT N &hm RGUI E    &hm RALT I  &hm RCTL O
+    &kp Z          &kp X        &kp C       &kp D         &kp V                                       &kp K           &kp H        &kp COMMA     &kp DOT     &kp FSLH
+                                &lt BT ESC  &mo SYM_LIN   &kp TAB                                     &lt NAV SPACE   &lt NUM BSPC &kp ENTER
+            >;
+    };
+
     sym_layer_mac {
             bindings = <
     &bootloader    &none        &none       &none         &none                                       &kp RBKT        &kp RBRC     &kp RPAR     &none       &kp PIPE
@@ -86,7 +95,15 @@
                                 &trans      &trans        &trans                                      &trans          &trans       &trans
             >;
         };
-
+        
+    sym_layer_linux {
+            bindings = <
+    &bootloader    &none        &none       &none         &none                                       &kp RBKT        &kp RBRC     &kp RPAR     &none       &kp PIPE
+    &kp GRAVE      &kp TILDE    &kp UNDER   &kp EQUAL     &none                                       &kp LBKT        &kp LBRC     &kp LPAR     &none       &kp BSLH
+    &sys_reset     &none        &kp PLUS    &kp MINUS     &none                                       &kp LS(RA(DQT)) &kp RA(S)    &kp COLON    &kp DQT     &kp SQT
+                                &trans      &trans        &trans                                      &trans          &trans       &trans
+            >;
+    };
     num_layer {
             bindings = <
     &kp EXCL      &kp AT        &kp HASH   &kp DOLLAR     &kp PERCENT                                 &kp CARET       &kp AMPS     &kp STAR    &kp PIPE     &trans
@@ -113,23 +130,5 @@
                                &trans     &trans         &trans                                       &trans          &trans       &trans   
             >;
         };
-    };
-
-    default_layer_linux {
-            bindings = <
-    &kp Q          &kp W        &kp F       &kp P         &kp B                                       &kp J           &kp L        &kp U         &kp Y       &kp SEMI
-    &hm LCTL A     &hm LALT R   &hm LGUI S  &hm LSHIFT T  &kp G                                       &kp M           &hm RSHIFT N &hm RGUI E    &hm RALT I  &hm RCTL O
-    &kp Z          &kp X        &kp C       &kp D         &kp V                                       &kp K           &kp H        &kp COMMA     &kp DOT     &kp FSLH
-                                &lt BT ESC  &mo SYM_LIN   &kp TAB                                     &lt NAV SPACE   &lt NUM BSPC &kp ENTER
-            >;
-    };
-
-    sym_layer_linux {
-            bindings = <
-    &bootloader    &none        &none       &none         &none                                       &kp RBKT        &kp RBRC     &kp RPAR     &none       &kp PIPE
-    &kp GRAVE      &kp TILDE    &kp UNDER   &kp EQUAL     &none                                       &kp LBKT        &kp LBRC     &kp LPAR     &none       &kp BSLH
-    &sys_reset     &none        &kp PLUS    &kp MINUS     &none                                       &kp LS(RA(DQT)) &kp RA(S)    &kp COLON    &kp DQT     &kp SQT
-                                &trans      &trans        &trans                                      &trans          &trans       &trans
-            >;
     };
 };
