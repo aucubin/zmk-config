@@ -62,7 +62,7 @@
             #binding-cells = <1>;
             wait-ms = <0>;
             tap-ms = <0>;
-            bindings = <&to ALPHA_LINUX>,  <&bt BT_SEL MACRO_PLACEHOLDER>;
+            bindings = <&to ALPHA_LIN>,  <&bt BT_SEL MACRO_PLACEHOLDER>;
         };
     };
 
