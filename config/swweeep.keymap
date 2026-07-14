@@ -26,6 +26,20 @@
             flavor = "tap-preferred";
             bindings = <&kp>, <&kp>;
         };
+
+        // Layer-tap that supports "tap, then tap-and-hold" to repeat the tapped
+        // key (e.g. hold Backspace to delete multiple characters), similar to
+        // QMK's "double tap to hold" behavior. Achieved via quick-tap-ms: if the
+        // key is tapped again within quick-tap-ms and held, it repeats the tap
+        // binding instead of activating the hold (layer) binding.
+        lr: layer_tap_repeat {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <175>;
+            flavor = "tap-preferred";
+            bindings = <&mo>, <&kp>;
+        };
     };
 
     combos {
@@ -74,7 +88,7 @@
     &kp Q          &kp W        &kp F       &kp P         &kp B                                       &kp J           &kp L        &kp U         &kp Y       &kp SEMI
     &hm LCTL A     &hm LALT R   &hm LGUI S  &hm LSHIFT T  &kp G                                       &kp M           &hm RSHIFT N &hm RGUI E    &hm RALT I  &hm RCTL O
     &kp Z          &kp X        &kp C       &kp D         &kp V                                       &kp K           &kp H        &kp COMMA     &kp DOT     &kp FSLH
-                                &lt BT ESC  &mo SYM_MAC   &kp TAB                                     &lt NAV SPACE   &lt NUM BSPC &kp ENTER
+                                &lt BT ESC  &mo SYM_MAC   &kp TAB                                     &lt NAV SPACE   &lr NUM BSPC &kp ENTER
             >;
         };
 
@@ -83,7 +97,7 @@
     &kp Q          &kp W        &kp F       &kp P         &kp B                                       &kp J           &kp L        &kp U         &kp Y       &kp SEMI
     &hm LCTL A     &hm LALT R   &hm LGUI S  &hm LSHIFT T  &kp G                                       &kp M           &hm RSHIFT N &hm RGUI E    &hm RALT I  &hm RCTL O
     &kp Z          &kp X        &kp C       &kp D         &kp V                                       &kp K           &kp H        &kp COMMA     &kp DOT     &kp FSLH
-                                &lt BT ESC  &mo SYM_LIN   &kp TAB                                     &lt NAV SPACE   &lt NUM BSPC &kp ENTER
+                                &lt BT ESC  &mo SYM_LIN   &kp TAB                                     &lt NAV SPACE   &lr NUM BSPC &kp ENTER
             >;
     };
 
