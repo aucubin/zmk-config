@@ -103,7 +103,7 @@
     &kp V        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &kp SEMI
     &hm LCTL R   &hm LALT S  &hm LGUI T  &hm LSHIFT H  &kp K              &kp X            &hm RSHIFT N  &hm RGUI A  &hm RALT I  &hm RCTL O
     &kp Z        &kp ESC     &kp C       &kp G         &kp D              &kp MINUS        &kp SLASH     &kp M       &comsem     &dotcol
-                             &mo ESC     &lt NUM SQT   &lt NAV SPACE      &lt SYM_MAC E    &lt FUN ENTER &kp ENTER
+                             &mo ESC     &lt NUM SQT   &lt NAV SPACE      &lt SYM_MAC E    &lt NAV ENTER &kp ENTER
             >;
         };
 
@@ -112,7 +112,7 @@
     &kp V        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &kp SEMI
     &hm LCTL R   &hm LALT S  &hm LGUI T  &hm LSHIFT H  &kp K              &kp X            &hm RSHIFT N  &hm RGUI A  &hm RALT I  &hm RCTL O
     &kp Z        &kp ESC     &kp C       &kp G         &kp D              &kp MINUS        &kp SLASH     &kp M       &comsem     &dotcol
-                             &mo ESC     &lt NUM SQT   &lt NAV SPACE      &lt SYM_LIN E    &lt FUN ENTER &kp ENTER
+                             &mo ESC     &lt NUM SQT   &lt NAV SPACE      &lt SYM_LIN E    &lt NAV ENTER &kp ENTER
             >;
         };
 
