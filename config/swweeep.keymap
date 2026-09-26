@@ -59,15 +59,20 @@
 
     combos {
         compatible = "zmk,combos";
-        combo_zoom_in {
+        combo_v {
             timeout-ms = <50>;
             key-positions = <0 1>;
-            bindings = <&kp LG(EQUAL)>;
+            bindings = <&kp V>;
         };
-        combo_zoom_out {
+        combo_q {
             timeout-ms = <50>;
             key-positions = <1 2>;
-            bindings = <&kp LG(MINUS)>;
+            bindings = <&kp Q>;
+        };
+        combo_z {
+            timeout-ms = <50>;
+            key-positions = <12 13>;
+            bindings = <&kp Q>;
         };
         combo_caps_word {
             timeout-ms = <50>;
