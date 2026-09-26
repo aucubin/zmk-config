@@ -107,7 +107,7 @@
             >;
         };
 
-    default_layer_mac {
+    default_layer_linux {
             bindings = <
     &kp V        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &kp SEMI
     &hm LCTL R   &hm LALT S  &hm LGUI T  &hm LSHIFT H  &kp K              &kp X            &hm RSHIFT N  &hm RGUI A  &hm RALT I  &hm RCTL O
