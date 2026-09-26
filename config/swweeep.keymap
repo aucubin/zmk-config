@@ -40,6 +40,21 @@
             flavor = "tap-preferred";
             bindings = <&mo>, <&kp>;
         };
+
+        dotcol: dot_colon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_COL";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp COLON>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        comsem: comma_semicolon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COM_SEM";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp SEMI>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
     };
 
     combos {
@@ -85,21 +100,21 @@
 
     default_layer_mac {
             bindings = <
-    &kp Q        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &kp SEMI
-    &hm LCTL A   &hm LALT R  &hm LGUI S  &hm LSHIFT T  &kp G              &kp M            &hm RSHIFT N  &hm RGUI E  &hm RALT I  &hm RCTL O
-    &kp Z        &kp X       &kp C       &kp D         &kp V              &kp K            &kp H         &kp COMMA   &kp DOT     &kp FSLH
-                             &lt BT ESC  &mo SYM_MAC   &kp TAB            &lt NAV SPACE    &lr NUM BSPC  &kp ENTER
+    &kp V        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &kp SEMI
+    &hm LCTL R   &hm LALT S  &hm LGUI T  &hm LSHIFT H  &kp K              &kp X            &hm RSHIFT N  &hm RGUI A  &hm RALT I  &hm RCTL O
+    &kp Z        &kp ESC     &kp C       &kp G         &kp D              &kp -            &kp SLASH     &kp M       &comsem     &dotcol
+                             &mo ESC     &lt NUM SQT   &lt NAV SPACE      &lt SYM_MAC E    &lt FUN ENTER &kp ENTER
             >;
         };
 
-    default_layer_linux {
+    default_layer_mac {
             bindings = <
-    &kp Q        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &kp SEMI
-    &hm LCTL A   &hm LALT R  &hm LGUI S  &hm LSHIFT T  &kp G              &kp M            &hm RSHIFT N  &hm RGUI E  &hm RALT I  &hm RCTL O
-    &kp Z        &kp X       &kp C       &kp D         &kp V              &kp K            &kp H         &kp COMMA   &kp DOT     &kp FSLH
-                             &lt BT ESC  &mo SYM_LIN   &kp TAB            &lt NAV SPACE    &lr NUM BSPC  &kp ENTER
+    &kp V        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &kp SEMI
+    &hm LCTL R   &hm LALT S  &hm LGUI T  &hm LSHIFT H  &kp K              &kp X            &hm RSHIFT N  &hm RGUI A  &hm RALT I  &hm RCTL O
+    &kp Z        &kp ESC     &kp C       &kp G         &kp D              &kp -            &kp SLASH     &kp M       &comsem     &dotcol
+                             &mo ESC     &lt NUM SQT   &lt NAV SPACE      &lt SYM_LIN E    &lt FUN ENTER &kp ENTER
             >;
-    };
+        };
 
     sym_layer_mac {
             bindings = <
