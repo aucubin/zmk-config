@@ -61,12 +61,12 @@
         compatible = "zmk,combos";
         combo_v {
             timeout-ms = <50>;
-            key-positions = <0 1>;
+            key-positions = <1 2>;
             bindings = <&kp V>;
         };
         combo_q {
             timeout-ms = <50>;
-            key-positions = <1 2>;
+            key-positions = <3 4>;
             bindings = <&kp Q>;
         };
         combo_z {
@@ -116,8 +116,8 @@
     default_layer_mac {
             bindings = <
     &none        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &none
-    &hm LCTL R   &hm LALT S  &hm LGUI T  &hm LSHIFT H  &kp K              &kp X            &hm RSHIFT N  &hm RGUI A  &hm RALT I  &hm RCTL O
-    &none        &kp C       &kp G       &kp D         &none              &none            &kp M         &comsem     &dotcol     &none
+    &none        &hm LALT S  &hm LGUI T  &hm LSHIFT H  &kp K              &kp X            &hm RSHIFT N  &hm RGUI A  &hm RALT I  &none
+    &hm LCTL R   &kp C       &kp G       &kp D         &none              &none            &kp M         &comsem     &dotcol     &hm RCTL O
                              &mo BT      &lt NUM SQT   &lt NAV SPACE      &lt SYM_MAC E    &lt NAV ENTER &kp ENTER
             >;
         };
@@ -125,8 +125,8 @@
     default_layer_linux {
             bindings = <
     &none        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &none
-    &hm LCTL R   &hm LALT S  &hm LGUI T  &hm LSHIFT H  &kp K              &kp X            &hm RSHIFT N  &hm RGUI A  &hm RALT I  &hm RCTL O
-    &none        &kp ESC     &kp C       &kp G         &none              &none            &kp M         &comsem     &dotcol     &none
+    &none        &hm LALT S  &hm LGUI T  &hm LSHIFT H  &kp K              &kp X            &hm RSHIFT N  &hm RGUI A  &hm RALT I  &none
+    &hm LCTL R   &kp ESC     &kp C       &kp G         &none              &none            &kp M         &comsem     &dotcol     &hm RCTL O
                              &mo ESC     &lt NUM SQT   &lt NAV SPACE      &lt SYM_LIN E    &lt NAV ENTER &kp ENTER
             >;
         };
