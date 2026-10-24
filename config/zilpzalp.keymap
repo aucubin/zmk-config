@@ -118,6 +118,30 @@
             key-positions = <5 7>;
             bindings = <&kp LC(BSPC)>;
         };
+/* umlauts */
+    combo_ae {
+            timeout-ms = <40>;
+            key-positions = <15 26>;
+            bindings = <&kp RA(Q)>;
+        };
+    };
+    combo_oe {
+            timeout-ms = <40>;
+            key-positions = <17 26>;
+            bindings = <&kp RA(P)>;
+        };
+    };
+    combo_ue {
+            timeout-ms = <40>;
+            key-positions = <6 26>;
+            bindings = <&kp RA(Y)>;
+        };
+    };
+    combo_sz {
+            timeout-ms = <40>;
+            key-positions = <9 25>;
+            bindings = <&kp RA(S)>;
+        };
     };
 };
 
