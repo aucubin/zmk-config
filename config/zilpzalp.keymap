@@ -15,6 +15,26 @@
     continue-list = <UNDERSCORE MINUS BSPC LSHFT RSHFT>;
 };
 
+/ {
+    macros {
+        ae: ae {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp A>;
+        };
+        oe: oe {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp O>;
+        };
+        ue: ue {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp DQT &kp U>;
+        };
+    };
+};
+
 
 / {
     combos {
@@ -122,17 +142,17 @@
         combo_ae {
             timeout-ms = <40>;
             key-positions = <15 26>;
-            bindings = <&kp RA(Q)>;
+            bindings = <&ae>;
         };
         combo_oe {
             timeout-ms = <40>;
             key-positions = <17 26>;
-            bindings = <&kp RA(P)>;
+            bindings = <&oe>;
         };
         combo_ue {
             timeout-ms = <40>;
             key-positions = <6 26>;
-            bindings = <&kp RA(Y)>;
+            bindings = <&ue>;
         };
         combo_sz {
             timeout-ms = <40>;
@@ -141,7 +161,6 @@
         };
     };   
 };
-
 
 / {
 
