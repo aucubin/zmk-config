@@ -8,7 +8,7 @@
 #define FUN 4
 
 &lt {
-    quick_tap_ms = <200>;
+    quick-tap-ms = <200>;
 };
 
 &caps_word {
@@ -119,30 +119,27 @@
             bindings = <&kp LC(BSPC)>;
         };
 /* umlauts */
-    combo_ae {
+        combo_ae {
             timeout-ms = <40>;
             key-positions = <15 26>;
             bindings = <&kp RA(Q)>;
         };
-    };
-    combo_oe {
+        combo_oe {
             timeout-ms = <40>;
             key-positions = <17 26>;
             bindings = <&kp RA(P)>;
         };
-    };
-    combo_ue {
+        combo_ue {
             timeout-ms = <40>;
             key-positions = <6 26>;
             bindings = <&kp RA(Y)>;
         };
-    };
-    combo_sz {
+        combo_sz {
             timeout-ms = <40>;
             key-positions = <9 25>;
             bindings = <&kp RA(S)>;
         };
-    };
+    };   
 };
 
 
