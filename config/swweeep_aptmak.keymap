@@ -1,0 +1,357 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/ext_power.h>
+#include <dt-bindings/zmk/outputs.h>
+
+// Aptmak variant of the swweeep keymap, thumbs and combos follow zilpzalp.keymap.
+// Built as a separate left-half firmware via KEYMAP_FILE in build.yaml.
+
+#define ALPHA_MAC 0
+#define ALPHA_LIN 1
+#define NUM 2
+#define NAV 3
+#define SYM 4
+#define FUN 5
+#define BT 6
+
+&lt {
+    quick-tap-ms = <200>;
+};
+
+&caps_word {
+    continue-list = <UNDERSCORE MINUS BSPC LSHFT RSHFT>;
+};
+
+/ {
+    macros {
+        bt_macro_mac: bt_macro_mac {
+            label = "bt_macro_mac";
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&to ALPHA_MAC>,  <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;
+        };
+        bt_macro_linux: bt_macro_linux {
+            label = "bt_macro_linux";
+            compatible = "zmk,behavior-macro-one-param";
+            #binding-cells = <1>;
+            wait-ms = <0>;
+            tap-ms = <0>;
+            bindings = <&to ALPHA_LIN>,  <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;
+        };
+        ae_mac: ae_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(U) &kp A>;
+        };
+        oe_mac: oe_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(U) &kp O>;
+        };
+        ue_mac: ue_mac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LA(U) &kp U>;
+        };
+        ae_lin: ae_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(RA(DQT)) &kp A>;
+        };
+        oe_lin: oe_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(RA(DQT)) &kp O>;
+        };
+        ue_lin: ue_lin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp LS(RA(DQT)) &kp U>;
+        };
+    };
+};
+
+// combos sit on the same letters as in zilpzalp.keymap
+/ {
+    combos {
+        compatible = "zmk,combos";
+/* usually on base layer */
+        combo_q {
+            timeout-ms = <40>;
+            key-positions = <2 3>;
+            bindings = <&kp Q>;
+        };
+        combo_z {
+            timeout-ms = <40>;
+            key-positions = <21 22>;
+            bindings = <&kp Z>;
+        };
+        combo_v {
+            timeout-ms = <40>;
+            key-positions = <1 2>;
+            bindings = <&kp V>;
+        };
+        combo_slash {
+            timeout-ms = <40>;
+            key-positions = <27 28>;
+            bindings = <&kp SLASH>;
+        };
+        combo_minus {
+            timeout-ms = <40>;
+            key-positions = <26 27>;
+            bindings = <&kp MINUS>;
+        };
+        combo_esc {
+            timeout-ms = <40>;
+            key-positions = <22 23>;
+            bindings = <&kp ESC>;
+        };
+/* parentheticals */
+        combo_lbrc {
+            timeout-ms = <40>;
+            key-positions = <1 11>;
+            bindings = <&kp LBRC>;
+        };
+        combo_lbkt {
+            timeout-ms = <40>;
+            key-positions = <2 12>;
+            bindings = <&kp LBKT>;
+        };
+        combo_lpar {
+            timeout-ms = <40>;
+            key-positions = <3 13>;
+            bindings = <&kp LPAR>;
+        };
+        combo_lt {
+            timeout-ms = <40>;
+            key-positions = <4 14>;
+            bindings = <&kp LT>;
+        };
+        combo_rbrc {
+            timeout-ms = <40>;
+            key-positions = <8 18>;
+            bindings = <&kp RBRC>;
+        };
+        combo_rbkt {
+            timeout-ms = <40>;
+            key-positions = <7 17>;
+            bindings = <&kp RBKT>;
+        };
+        combo_rpar {
+            timeout-ms = <40>;
+            key-positions = <6 16>;
+            bindings = <&kp RPAR>;
+        };
+        combo_gt {
+            timeout-ms = <40>;
+            key-positions = <5 15>;
+            bindings = <&kp GT>;
+        };
+/* caps */
+        combo_caps-word {
+            timeout-ms = <40>;
+            key-positions = <13 16>;
+            bindings = <&caps_word>;
+        };
+        combo_capslock {
+            timeout-ms = <40>;
+            key-positions = <1 8>;
+            bindings = <&kp CAPSLOCK>;
+        };
+/* deletion */
+        combo_bspc {
+            timeout-ms = <40>;
+            key-positions = <6 7>;
+            bindings = <&kp BSPC>;
+        };
+        combo_del {
+            timeout-ms = <40>;
+            key-positions = <7 8>;
+            bindings = <&kp DEL>;
+        };
+        combo_delword_mac {
+            timeout-ms = <40>;
+            key-positions = <6 8>;
+            bindings = <&kp LA(BSPC)>;
+            layers = <ALPHA_MAC>;
+        };
+        combo_delword_lin {
+            timeout-ms = <40>;
+            key-positions = <6 8>;
+            bindings = <&kp LC(BSPC)>;
+            layers = <ALPHA_LIN>;
+        };
+/* umlauts */
+        combo_ae_mac {
+            timeout-ms = <40>;
+            key-positions = <17 33>;
+            bindings = <&ae_mac>;
+            layers = <ALPHA_MAC>;
+        };
+        combo_oe_mac {
+            timeout-ms = <40>;
+            key-positions = <19 33>;
+            bindings = <&oe_mac>;
+            layers = <ALPHA_MAC>;
+        };
+        combo_ue_mac {
+            timeout-ms = <40>;
+            key-positions = <7 33>;
+            bindings = <&ue_mac>;
+            layers = <ALPHA_MAC>;
+        };
+        combo_sz_mac {
+            timeout-ms = <40>;
+            key-positions = <11 32>;
+            bindings = <&kp LA(S)>;
+            layers = <ALPHA_MAC>;
+        };
+        combo_ae_lin {
+            timeout-ms = <40>;
+            key-positions = <17 33>;
+            bindings = <&ae_lin>;
+            layers = <ALPHA_LIN>;
+        };
+        combo_oe_lin {
+            timeout-ms = <40>;
+            key-positions = <19 33>;
+            bindings = <&oe_lin>;
+            layers = <ALPHA_LIN>;
+        };
+        combo_ue_lin {
+            timeout-ms = <40>;
+            key-positions = <7 33>;
+            bindings = <&ue_lin>;
+            layers = <ALPHA_LIN>;
+        };
+        combo_sz_lin {
+            timeout-ms = <40>;
+            key-positions = <11 32>;
+            bindings = <&kp RA(S)>;
+            layers = <ALPHA_LIN>;
+        };
+    };
+};
+
+/ {
+
+    behaviors {
+        hl: homerow_mods_left {
+            compatible = "zmk,behavior-hold-tap";
+            label = "homerow mods left";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <100>;
+            bindings = <&kp>, <&kp>;
+            // opposite side hand keys
+            hold-trigger-key-positions = <5 6 7 8 9 15 16 17 18 19 25 26 27 28 29 33 34 35>;
+        };
+
+        hr: homerow_mods_right {
+            compatible = "zmk,behavior-hold-tap";
+            label = "homerow mods right";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <100>;
+            bindings = <&kp>, <&kp>;
+            // opposite side hand keys
+            hold-trigger-key-positions = <0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31 32>;
+        };
+
+        dotcol: dot_colon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "DOT_COL";
+            #binding-cells = <0>;
+            bindings = <&kp DOT>, <&kp COLON>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+        comsem: comma_semicolon {
+            compatible = "zmk,behavior-mod-morph";
+            label = "COM_SEM";
+            #binding-cells = <0>;
+            bindings = <&kp COMMA>, <&kp SEMI>;
+            mods = <(MOD_LSFT|MOD_RSFT)>;
+        };
+    };
+};
+
+// swweeep key numbers
+//  0  1  2  3  4    5  6  7  8  9
+// 10 11 12 13 14   15 16 17 18 19
+// 20 21 22 23 24   25 26 27 28 29
+//       30 31 32   33 34 35
+
+/ {
+
+    keymap {
+        compatible = "zmk,keymap";
+
+    default_layer_mac {
+            bindings = <
+    &kp V         &kp W          &kp F          &kp P             &kp B              &kp J         &kp L          &kp U       &kp Y        &kp SEMI
+    &hl LCTRL R   &hl LALT S     &hl LGUI T     &hl LSHFT H       &hl RALT K         &hr RALT X    &hr RSHFT N    &hr LGUI A  &hr LALT I   &hr RCTRL O
+    &kp Z         &kp C          &kp G          &kp D             &kp Q              &kp SQT       &kp M          &comsem     &dotcol      &kp FSLH
+                                 &lt BT ESC     &lt NUM SQT       &lt NAV SPACE      &lt SYM E     &lt FUN ENTER  &kp TAB
+            >;
+        };
+
+    default_layer_linux {
+            bindings = <
+    &kp V         &kp W          &kp F          &kp P             &kp B              &kp J         &kp L          &kp U       &kp Y        &kp SEMI
+    &hl LCTRL R   &hl LALT S     &hl LGUI T     &hl LSHFT H       &hl RALT K         &hr RALT X    &hr RSHFT N    &hr LGUI A  &hr LALT I   &hr RCTRL O
+    &kp Z         &kp C          &kp G          &kp D             &kp Q              &kp SQT       &kp M          &comsem     &dotcol      &kp FSLH
+                                 &lt BT ESC     &lt NUM SQT       &lt NAV SPACE      &lt SYM E     &lt FUN ENTER  &kp TAB
+            >;
+        };
+
+    num_layer {
+            bindings = <
+    &none         &kp N9         &kp N8         &kp N7            &kp KP_ASTERISK    &kp PLUS      &kp N7         &kp N8      &kp N9       &none
+    &hl LCTRL N0  &hl LALT N6    &hl LGUI N5    &hl LSHFT N4      &kp SLASH          &kp MINUS     &kp N4         &kp N5      &kp N6       &kp KP_DOT
+    &none         &kp N3         &kp N2         &kp N1            &none              &none         &kp N1         &kp N2      &kp N3       &none
+                                 &trans         &trans            &trans             &kp E         &kp N0         &trans
+            >;
+        };
+
+    nav_layer {
+            bindings = <
+    &none         &kp INSERT     &kp UP         &kp BSPC          &kp C_VOL_DN       &kp C_VOL_UP  &kp BSPC       &kp DEL     &kp INSERT   &none
+    &kp LCTRL     &hl LALT LEFT  &hl LGUI DOWN  &hl LSHFT RIGHT   &kp C_MUTE         &kp LEFT      &kp DOWN       &kp UP      &kp RIGHT    &kp TAB
+    &none         &kp HOME       &kp PG_DN      &kp END           &none              &none         &kp HOME       &kp PG_UP   &kp END      &none
+                                 &trans         &trans            &trans             &trans        &trans         &trans
+            >;
+        };
+
+    sym_layer {
+            bindings = <
+    &none         &kp GRAVE      &kp DQT        &kp RA(LS(SEMI))  &kp LBRC           &kp RBRC      &kp BSLH       &kp PIPE    &kp LT       &none
+    &kp EXCL      &kp AT         &kp HASH       &kp DOLLAR        &kp LPAR           &kp RPAR      &kp AMPS       &kp STAR    &kp PERCENT  &kp CARET
+    &none         &kp TILDE      &kp SQT        &kp UNDER         &none              &none         &kp MINUS      &kp PLUS    &kp EQUAL    &none
+                                 &trans         &kp LBKT          &kp RBKT           &trans        &trans         &trans
+            >;
+        };
+
+    fun_layer {
+            bindings = <
+    &trans        &trans         &trans         &trans            &trans             &kp F12       &kp F7         &kp F8      &kp F9       &sys_reset
+    &trans        &trans         &trans         &trans            &trans             &kp F11       &kp F4         &kp F5      &kp F6       &kp F10
+    &trans        &trans         &trans         &trans            &trans             &trans        &kp F1         &kp F2      &kp F3       &bootloader
+                                 &trans         &trans            &trans             &trans        &trans         &trans
+            >;
+        };
+
+    bt_layer {
+            bindings = <
+    &bt BT_CLR    &bootloader    &none          &bt BT_SEL 4      &bt_macro_linux 2  &none         &none          &none       &none        &none
+    &bt BT_NXT    &sys_reset     &none          &bt BT_SEL 3      &bt_macro_mac 1    &none         &none          &none       &none        &none
+    &bt BT_PRV    &none          &none          &none             &bt_macro_mac 0    &none         &none          &none       &none        &none
+                                 &trans         &trans            &trans             &trans        &trans         &trans
+            >;
+        };
+    };
+};
