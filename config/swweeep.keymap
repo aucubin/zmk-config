@@ -40,54 +40,24 @@
             flavor = "tap-preferred";
             bindings = <&mo>, <&kp>;
         };
-
-        dotcol: dot_colon {
-            compatible = "zmk,behavior-mod-morph";
-            label = "DOT_COL";
-            #binding-cells = <0>;
-            bindings = <&kp DOT>, <&kp COLON>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        comsem: comma_semicolon {
-            compatible = "zmk,behavior-mod-morph";
-            label = "COM_SEM";
-            #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp SEMI>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
     };
 
     combos {
         compatible = "zmk,combos";
-        combo_v {
+        combo_zoom_in {
+            timeout-ms = <50>;
+            key-positions = <0 1>;
+            bindings = <&kp LG(EQUAL)>;
+        };
+        combo_zoom_out {
             timeout-ms = <50>;
             key-positions = <1 2>;
-            bindings = <&kp V>;
-        };
-        combo_q {
-            timeout-ms = <50>;
-            key-positions = <3 4>;
-            bindings = <&kp Q>;
-        };
-        combo_z {
-            timeout-ms = <50>;
-            key-positions = <21 22>;
-            bindings = <&kp Z>;
-        };
-       combo_esc {
-            timeout-ms = <50>;
-            key-positions = <22 23>;
-            bindings = <&kp ESC>;
+            bindings = <&kp LG(MINUS)>;
         };
         combo_caps_word {
             timeout-ms = <50>;
             key-positions = <13 16>;
             bindings = <&caps_word>;
-        };
-        combo_bspc {
-            timeout-ms = <40>;
-            key-positions = <6 7>;
-            bindings = <&kp BSPC>;
         };
     };
 
@@ -115,25 +85,25 @@
 
     default_layer_mac {
             bindings = <
-    &none        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &none
-    &none        &hm LALT S  &hm LGUI T  &hm LSHIFT H  &kp K              &kp X            &hm RSHIFT N  &hm RGUI A  &hm RALT I  &none
-    &hm LCTL R   &kp C       &kp G       &kp D         &none              &none            &kp M         &comsem     &dotcol     &hm RCTL O
-                             &mo BT      &lt NUM SQT   &lt NAV SPACE      &lt SYM_MAC E    &lt NAV ENTER &kp ENTER
+    &kp Q        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &kp SEMI
+    &hm LCTL A   &hm LALT R  &hm LGUI S  &hm LSHIFT T  &kp G              &kp M            &hm RSHIFT N  &hm RGUI E  &hm RALT I  &hm RCTL O
+    &kp Z        &kp X       &kp C       &kp D         &kp V              &kp K            &kp H         &kp COMMA   &kp DOT     &kp FSLH
+                             &lt BT ESC  &mo SYM_MAC   &kp TAB            &lt NAV SPACE    &lr NUM BSPC  &kp ENTER
             >;
         };
 
     default_layer_linux {
             bindings = <
-    &none        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &none
-    &none        &hm LALT S  &hm LGUI T  &hm LSHIFT H  &kp K              &kp X            &hm RSHIFT N  &hm RGUI A  &hm RALT I  &none
-    &hm LCTL R   &kp ESC     &kp C       &kp G         &none              &none            &kp M         &comsem     &dotcol     &hm RCTL O
-                             &mo ESC     &lt NUM SQT   &lt NAV SPACE      &lt SYM_LIN E    &lt NAV ENTER &kp ENTER
+    &kp Q        &kp W       &kp F       &kp P         &kp B              &kp J            &kp L         &kp U       &kp Y       &kp SEMI
+    &hm LCTL A   &hm LALT R  &hm LGUI S  &hm LSHIFT T  &kp G              &kp M            &hm RSHIFT N  &hm RGUI E  &hm RALT I  &hm RCTL O
+    &kp Z        &kp X       &kp C       &kp D         &kp V              &kp K            &kp H         &kp COMMA   &kp DOT     &kp FSLH
+                             &lt BT ESC  &mo SYM_LIN   &kp TAB            &lt NAV SPACE    &lr NUM BSPC  &kp ENTER
             >;
-        };
+    };
 
     sym_layer_mac {
             bindings = <
-    &none        &none       &none       &none         &none              &kp RBKT         &kp RBRC      &kp RPAR    &none       &kp PIPE
+    &bootloader  &none       &none       &none         &none              &kp RBKT         &kp RBRC      &kp RPAR    &none       &kp PIPE
     &kp GRAVE    &kp TILDE   &kp UNDER   &kp EQUAL     &none              &kp LBKT         &kp LBRC      &kp LPAR    &none       &kp BSLH
     &sys_reset   &none       &kp PLUS    &kp MINUS     &none              &kp LA(U)        &kp LA(S)     &kp COLON   &kp DQT     &kp SQT
                              &trans      &trans        &trans             &trans           &trans        &trans
@@ -142,7 +112,7 @@
         
     sym_layer_linux {
             bindings = <
-    &none        &none       &none       &none         &none              &kp RBKT         &kp RBRC      &kp RPAR    &none       &kp PIPE
+    &bootloader  &none       &none       &none         &none              &kp RBKT         &kp RBRC      &kp RPAR    &none       &kp PIPE
     &kp GRAVE    &kp TILDE   &kp UNDER   &kp EQUAL     &none              &kp LBKT         &kp LBRC      &kp LPAR    &none       &kp BSLH
     &sys_reset   &none       &kp PLUS    &kp MINUS     &none              &kp LS(RA(DQT))  &kp RA(S)     &kp COLON   &kp DQT     &kp SQT
                              &trans      &trans        &trans             &trans           &trans        &trans
@@ -152,7 +122,7 @@
             bindings = <
     &kp EXCL     &kp AT      &kp HASH    &kp DOLLAR    &kp PERCENT        &kp CARET        &kp AMPS      &kp STAR    &kp PIPE    &trans
     &kp N1       &kp N2      &kp N3      &kp N4        &kp N5             &kp N6           &kp N7        &kp N8      &kp N9      &kp N0
-    &bootloader  &none       &none       &none         &none              &none            &none         &none       &none       &none
+    &none        &none       &none       &none         &none              &none            &none         &none       &none       &none
                              &trans      &trans        &trans             &trans           &trans        &trans
             >;
         };
