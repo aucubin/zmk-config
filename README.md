@@ -1,12 +1,15 @@
 # zmk-config
 
-ZMK config for the swweeep (36 keys, split) and the zilpzalp (28 keys).
+ZMK config for the swweeep (36 keys, split), the Bad Wings v2 (36 keys, with
+Cirque touchpad) and the zilpzalp (28 keys).
 
 | Keyboard | Keymap | Firmware artifact |
 |---|---|---|
 | swweeep, Colemak-DH | `config/swweeep_colemak.keymap` | `swweeep_left-colemak-dh` |
 | swweeep, Aptmak | `config/swweeep_aptmak.keymap` | `swweeep_left-aptmak` |
 | swweeep, right half | (keymap lives on the left half) | `swweeep_right-nice_nano_v2-zmk` |
+| Bad Wings v2, Colemak-DH | `config/bw2_colemak.keymap` | `bw2-colemak-dh` |
+| Bad Wings v2, Aptmak | `config/bw2_aptmak.keymap` | `bw2-aptmak` |
 | zilpzalp, Aptmak | `config/zilpzalp.keymap` | `zilpzalp-seeeduino_xiao_rp2040-zmk` |
 
 The swweeep left half is the central and holds the keymap, so switching the
@@ -108,6 +111,25 @@ held by that half's thumb.
 | Delete word (Ctrl+BSPC) | L+Y | L+Y |
 | ä / ö / ü (`"` then the letter) | A+E, O+E, U+E | E+BSPC, O+BSPC, U+BSPC |
 | ß (AltGr+S) | S+Space | R+Space |
+
+## Bad Wings v2 (bw2)
+
+Same base layers, layers and combos as the swweeep (it reuses
+`config/swweeep_common.dtsi`; its other layers are in `config/bw2_layers.dtsi`).
+Board and touchpad shield come from
+[hazels-garage/zmk-bad-wings-2](https://github.com/hazels-garage/zmk-bad-wings-2).
+Differences, since the bw2 is USB only:
+
+- ESC (left thumb) is a plain key, there is no BT layer.
+- FUN has the touchpad's right/middle click on the left half (left click is a
+  tap on the touchpad):
+
+```
+FUN (right thumb)
+·    ·    ·    ·    ·    | F12  F7   F8   F9   rst
+·    ·    ·    ·    RCLK | F11  F4   F5   F6   F10
+·    ·    ·    ·    MCLK | ·    F1   F2   F3   boot
+```
 
 ## zilpzalp — Aptmak
 

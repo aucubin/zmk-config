@@ -1,0 +1,23 @@
+#include "swweeep_common.dtsi"
+
+// Colemak-DH base layer for the Bad Wings v2 with Cirque touchpad, built as the
+// bw2-colemak-dh firmware. Same as swweeep_colemak.keymap, except ESC has no
+// BT layer (the bw2 is USB only).
+// Thumbs match Aptmak, with Backspace instead of E on the SYM thumb.
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+    default_layer {
+            bindings = <
+    &kp Q        &kp W       &kp F       &kp P        &kp B          &kp J         &kp L          &kp U       &kp Y       &kp SEMI
+    &hl LCTRL A  &hl LALT R  &hl LGUI S  &hl LSHFT T  &hl RALT G     &hr RALT M    &hr RSHFT N    &hr LGUI E  &hr LALT I  &hr RCTRL O
+    &kp Z        &kp X       &kp C       &kp D        &kp V          &kp K         &kp H          &comsem     &dotcol     &kp FSLH
+                             &kp ESC     &lt NUM SQT  &lt NAV SPACE  &lt SYM BSPC  &lt FUN ENTER  &kp TAB
+            >;
+        };
+    };
+};
+
+#include "bw2_layers.dtsi"

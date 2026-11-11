@@ -1,0 +1,45 @@
+// Layers shared by all bw2 (Bad Wings v2) keymaps, appended after the base layer.
+// Same as swweeep_layers.dtsi, except: no BT layer (the bw2 is USB only) and
+// mouse buttons for the touchpad on the left half of the FUN layer.
+
+#include <dt-bindings/zmk/pointing.h>
+
+/ {
+    keymap {
+    num_layer {
+            bindings = <
+    &none         &kp N9         &kp N8         &kp N7            &kp KP_ASTERISK  &kp PLUS      &kp N7     &kp N8     &kp N9       &none
+    &hl LCTRL N0  &hl LALT N6    &hl LGUI N5    &hl LSHFT N4      &kp SLASH        &kp MINUS     &kp N4     &kp N5     &kp N6       &kp KP_DOT
+    &none         &kp N3         &kp N2         &kp N1            &none            &none         &kp N1     &kp N2     &kp N3       &none
+                                 &trans         &trans            &trans           &kp E         &kp N0     &trans
+            >;
+        };
+
+    nav_layer {
+            bindings = <
+    &none         &kp INSERT     &kp UP         &kp BSPC          &kp C_VOL_DN     &kp C_VOL_UP  &kp BSPC   &kp DEL    &kp INSERT   &none
+    &kp LCTRL     &hl LALT LEFT  &hl LGUI DOWN  &hl LSHFT RIGHT   &kp C_MUTE       &kp LEFT      &kp DOWN   &kp UP     &kp RIGHT    &kp TAB
+    &none         &kp HOME       &kp PG_DN      &kp END           &none            &none         &kp HOME   &kp PG_UP  &kp END      &none
+                                 &trans         &trans            &trans           &trans        &trans     &trans
+            >;
+        };
+
+    sym_layer {
+            bindings = <
+    &none         &kp GRAVE      &kp DQT        &kp RA(LS(SEMI))  &kp LBRC         &kp RBRC      &kp BSLH   &kp PIPE   &kp LT       &none
+    &kp EXCL      &kp AT         &kp HASH       &kp DOLLAR        &kp LPAR         &kp RPAR      &kp AMPS   &kp STAR   &kp PERCENT  &kp CARET
+    &none         &kp TILDE      &kp SQT        &kp UNDER         &none            &none         &kp MINUS  &kp PLUS   &kp EQUAL    &none
+                                 &trans         &kp LBKT          &kp RBKT         &trans        &trans     &trans
+            >;
+        };
+
+    fun_layer {
+            bindings = <
+    &trans        &trans         &trans         &trans            &trans           &kp F12       &kp F7     &kp F8     &kp F9       &sys_reset
+    &trans        &trans         &trans         &trans            &mkp RCLK        &kp F11       &kp F4     &kp F5     &kp F6       &kp F10
+    &trans        &trans         &trans         &trans            &mkp MCLK        &trans        &kp F1     &kp F2     &kp F3       &bootloader
+                                 &trans         &trans            &trans           &trans        &trans     &trans
+            >;
+        };
+    };
+};

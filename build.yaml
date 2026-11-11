@@ -33,3 +33,11 @@ include:
     shield: swweeep_right
     # the right half doesn't use the keymap, but the build still needs one
     cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/config/swweeep_colemak.keymap
+  - board: bw2
+    shield: bw2_cirque
+    cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/config/bw2_colemak.keymap
+    artifact-name: bw2-colemak-dh
+  - board: bw2
+    shield: bw2_cirque
+    cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/config/bw2_aptmak.keymap
+    artifact-name: bw2-aptmak

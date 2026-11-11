@@ -6,6 +6,10 @@ manifest:
       url-base: https://github.com/kilipan
     - name: sadekbaroudi
       url-base: https://github.com/sadekbaroudi
+    - name: hazels-garage
+      url-base: https://github.com/hazels-garage
+    - name: petejohanson
+      url-base: https://github.com/petejohanson
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
@@ -20,5 +24,11 @@ manifest:
       remote: sadekbaroudi
       revision: main
       import: config/deps.yml
+    - name: zmk-bad-wings-2
+      remote: hazels-garage
+      revision: main
+    - name: cirque-input-module
+      remote: petejohanson
+      revision: main
   self:
     path: config

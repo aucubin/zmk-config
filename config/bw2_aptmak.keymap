@@ -1,0 +1,22 @@
+#include "swweeep_common.dtsi"
+
+// Aptmak base layer for the Bad Wings v2 with Cirque touchpad, built as the
+// bw2-aptmak firmware. Same as swweeep_aptmak.keymap, except ESC has no
+// BT layer (the bw2 is USB only).
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+    default_layer {
+            bindings = <
+    &kp V        &kp W       &kp F       &kp P        &kp B          &kp J       &kp L          &kp U       &kp Y       &kp SEMI
+    &hl LCTRL R  &hl LALT S  &hl LGUI T  &hl LSHFT H  &hl RALT K     &hr RALT X  &hr RSHFT N    &hr LGUI A  &hr LALT I  &hr RCTRL O
+    &kp Z        &kp C       &kp G       &kp D        &kp Q          &kp SQT     &kp M          &comsem     &dotcol     &kp FSLH
+                             &kp ESC     &lt NUM SQT  &lt NAV SPACE  &lt SYM E   &lt FUN ENTER  &kp TAB
+            >;
+        };
+    };
+};
+
+#include "bw2_layers.dtsi"
