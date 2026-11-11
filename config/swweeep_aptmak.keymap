@@ -7,13 +7,12 @@
 // Aptmak variant of the swweeep keymap, thumbs and combos follow zilpzalp.keymap.
 // Built as a separate left-half firmware via KEYMAP_FILE in build.yaml.
 
-#define ALPHA_MAC 0
-#define ALPHA_LIN 1
-#define NUM 2
-#define NAV 3
-#define SYM 4
-#define FUN 5
-#define BT 6
+#define ALPHA 0
+#define NUM 1
+#define NAV 2
+#define SYM 3
+#define FUN 4
+#define BT 5
 
 &lt {
     quick-tap-ms = <200>;
@@ -25,51 +24,20 @@
 
 / {
     macros {
-        bt_macro_mac: bt_macro_mac {
-            label = "bt_macro_mac";
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&to ALPHA_MAC>,  <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;
-        };
-        bt_macro_linux: bt_macro_linux {
-            label = "bt_macro_linux";
-            compatible = "zmk,behavior-macro-one-param";
-            #binding-cells = <1>;
-            wait-ms = <0>;
-            tap-ms = <0>;
-            bindings = <&to ALPHA_LIN>,  <&macro_param_1to2>, <&bt BT_SEL MACRO_PLACEHOLDER>;
-        };
-        ae_mac: ae_mac {
+        ae: ae {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(U) &kp A>;
+            bindings = <&kp DQT &kp A>;
         };
-        oe_mac: oe_mac {
+        oe: oe {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(U) &kp O>;
+            bindings = <&kp DQT &kp O>;
         };
-        ue_mac: ue_mac {
+        ue: ue {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
-            bindings = <&kp LA(U) &kp U>;
-        };
-        ae_lin: ae_lin {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(RA(DQT)) &kp A>;
-        };
-        oe_lin: oe_lin {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(RA(DQT)) &kp O>;
-        };
-        ue_lin: ue_lin {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LS(RA(DQT)) &kp U>;
+            bindings = <&kp DQT &kp U>;
         };
     };
 };
@@ -172,66 +140,31 @@
             key-positions = <7 8>;
             bindings = <&kp DEL>;
         };
-        combo_delword_mac {
-            timeout-ms = <40>;
-            key-positions = <6 8>;
-            bindings = <&kp LA(BSPC)>;
-            layers = <ALPHA_MAC>;
-        };
-        combo_delword_lin {
+        combo_delword {
             timeout-ms = <40>;
             key-positions = <6 8>;
             bindings = <&kp LC(BSPC)>;
-            layers = <ALPHA_LIN>;
         };
 /* umlauts */
-        combo_ae_mac {
+        combo_ae {
             timeout-ms = <40>;
             key-positions = <17 33>;
-            bindings = <&ae_mac>;
-            layers = <ALPHA_MAC>;
+            bindings = <&ae>;
         };
-        combo_oe_mac {
+        combo_oe {
             timeout-ms = <40>;
             key-positions = <19 33>;
-            bindings = <&oe_mac>;
-            layers = <ALPHA_MAC>;
+            bindings = <&oe>;
         };
-        combo_ue_mac {
+        combo_ue {
             timeout-ms = <40>;
             key-positions = <7 33>;
-            bindings = <&ue_mac>;
-            layers = <ALPHA_MAC>;
+            bindings = <&ue>;
         };
-        combo_sz_mac {
-            timeout-ms = <40>;
-            key-positions = <11 32>;
-            bindings = <&kp LA(S)>;
-            layers = <ALPHA_MAC>;
-        };
-        combo_ae_lin {
-            timeout-ms = <40>;
-            key-positions = <17 33>;
-            bindings = <&ae_lin>;
-            layers = <ALPHA_LIN>;
-        };
-        combo_oe_lin {
-            timeout-ms = <40>;
-            key-positions = <19 33>;
-            bindings = <&oe_lin>;
-            layers = <ALPHA_LIN>;
-        };
-        combo_ue_lin {
-            timeout-ms = <40>;
-            key-positions = <7 33>;
-            bindings = <&ue_lin>;
-            layers = <ALPHA_LIN>;
-        };
-        combo_sz_lin {
+        combo_sz {
             timeout-ms = <40>;
             key-positions = <11 32>;
             bindings = <&kp RA(S)>;
-            layers = <ALPHA_LIN>;
         };
     };
 };
@@ -291,66 +224,57 @@
     keymap {
         compatible = "zmk,keymap";
 
-    default_layer_mac {
+    default_layer {
             bindings = <
-    &kp V         &kp W          &kp F          &kp P             &kp B              &kp J         &kp L          &kp U       &kp Y        &kp SEMI
-    &hl LCTRL R   &hl LALT S     &hl LGUI T     &hl LSHFT H       &hl RALT K         &hr RALT X    &hr RSHFT N    &hr LGUI A  &hr LALT I   &hr RCTRL O
-    &kp Z         &kp C          &kp G          &kp D             &kp Q              &kp SQT       &kp M          &comsem     &dotcol      &kp FSLH
-                                 &lt BT ESC     &lt NUM SQT       &lt NAV SPACE      &lt SYM E     &lt FUN ENTER  &kp TAB
-            >;
-        };
-
-    default_layer_linux {
-            bindings = <
-    &kp V         &kp W          &kp F          &kp P             &kp B              &kp J         &kp L          &kp U       &kp Y        &kp SEMI
-    &hl LCTRL R   &hl LALT S     &hl LGUI T     &hl LSHFT H       &hl RALT K         &hr RALT X    &hr RSHFT N    &hr LGUI A  &hr LALT I   &hr RCTRL O
-    &kp Z         &kp C          &kp G          &kp D             &kp Q              &kp SQT       &kp M          &comsem     &dotcol      &kp FSLH
-                                 &lt BT ESC     &lt NUM SQT       &lt NAV SPACE      &lt SYM E     &lt FUN ENTER  &kp TAB
+    &kp V         &kp W          &kp F          &kp P             &kp B            &kp J         &kp L          &kp U       &kp Y        &kp SEMI
+    &hl LCTRL R   &hl LALT S     &hl LGUI T     &hl LSHFT H       &hl RALT K       &hr RALT X    &hr RSHFT N    &hr LGUI A  &hr LALT I   &hr RCTRL O
+    &kp Z         &kp C          &kp G          &kp D             &kp Q            &kp SQT       &kp M          &comsem     &dotcol      &kp FSLH
+                                 &lt BT ESC     &lt NUM SQT       &lt NAV SPACE    &lt SYM E     &lt FUN ENTER  &kp TAB
             >;
         };
 
     num_layer {
             bindings = <
-    &none         &kp N9         &kp N8         &kp N7            &kp KP_ASTERISK    &kp PLUS      &kp N7         &kp N8      &kp N9       &none
-    &hl LCTRL N0  &hl LALT N6    &hl LGUI N5    &hl LSHFT N4      &kp SLASH          &kp MINUS     &kp N4         &kp N5      &kp N6       &kp KP_DOT
-    &none         &kp N3         &kp N2         &kp N1            &none              &none         &kp N1         &kp N2      &kp N3       &none
-                                 &trans         &trans            &trans             &kp E         &kp N0         &trans
+    &none         &kp N9         &kp N8         &kp N7            &kp KP_ASTERISK  &kp PLUS      &kp N7         &kp N8      &kp N9       &none
+    &hl LCTRL N0  &hl LALT N6    &hl LGUI N5    &hl LSHFT N4      &kp SLASH        &kp MINUS     &kp N4         &kp N5      &kp N6       &kp KP_DOT
+    &none         &kp N3         &kp N2         &kp N1            &none            &none         &kp N1         &kp N2      &kp N3       &none
+                                 &trans         &trans            &trans           &kp E         &kp N0         &trans
             >;
         };
 
     nav_layer {
             bindings = <
-    &none         &kp INSERT     &kp UP         &kp BSPC          &kp C_VOL_DN       &kp C_VOL_UP  &kp BSPC       &kp DEL     &kp INSERT   &none
-    &kp LCTRL     &hl LALT LEFT  &hl LGUI DOWN  &hl LSHFT RIGHT   &kp C_MUTE         &kp LEFT      &kp DOWN       &kp UP      &kp RIGHT    &kp TAB
-    &none         &kp HOME       &kp PG_DN      &kp END           &none              &none         &kp HOME       &kp PG_UP   &kp END      &none
-                                 &trans         &trans            &trans             &trans        &trans         &trans
+    &none         &kp INSERT     &kp UP         &kp BSPC          &kp C_VOL_DN     &kp C_VOL_UP  &kp BSPC       &kp DEL     &kp INSERT   &none
+    &kp LCTRL     &hl LALT LEFT  &hl LGUI DOWN  &hl LSHFT RIGHT   &kp C_MUTE       &kp LEFT      &kp DOWN       &kp UP      &kp RIGHT    &kp TAB
+    &none         &kp HOME       &kp PG_DN      &kp END           &none            &none         &kp HOME       &kp PG_UP   &kp END      &none
+                                 &trans         &trans            &trans           &trans        &trans         &trans
             >;
         };
 
     sym_layer {
             bindings = <
-    &none         &kp GRAVE      &kp DQT        &kp RA(LS(SEMI))  &kp LBRC           &kp RBRC      &kp BSLH       &kp PIPE    &kp LT       &none
-    &kp EXCL      &kp AT         &kp HASH       &kp DOLLAR        &kp LPAR           &kp RPAR      &kp AMPS       &kp STAR    &kp PERCENT  &kp CARET
-    &none         &kp TILDE      &kp SQT        &kp UNDER         &none              &none         &kp MINUS      &kp PLUS    &kp EQUAL    &none
-                                 &trans         &kp LBKT          &kp RBKT           &trans        &trans         &trans
+    &none         &kp GRAVE      &kp DQT        &kp RA(LS(SEMI))  &kp LBRC         &kp RBRC      &kp BSLH       &kp PIPE    &kp LT       &none
+    &kp EXCL      &kp AT         &kp HASH       &kp DOLLAR        &kp LPAR         &kp RPAR      &kp AMPS       &kp STAR    &kp PERCENT  &kp CARET
+    &none         &kp TILDE      &kp SQT        &kp UNDER         &none            &none         &kp MINUS      &kp PLUS    &kp EQUAL    &none
+                                 &trans         &kp LBKT          &kp RBKT         &trans        &trans         &trans
             >;
         };
 
     fun_layer {
             bindings = <
-    &trans        &trans         &trans         &trans            &trans             &kp F12       &kp F7         &kp F8      &kp F9       &sys_reset
-    &trans        &trans         &trans         &trans            &trans             &kp F11       &kp F4         &kp F5      &kp F6       &kp F10
-    &trans        &trans         &trans         &trans            &trans             &trans        &kp F1         &kp F2      &kp F3       &bootloader
-                                 &trans         &trans            &trans             &trans        &trans         &trans
+    &trans        &trans         &trans         &trans            &trans           &kp F12       &kp F7         &kp F8      &kp F9       &sys_reset
+    &trans        &trans         &trans         &trans            &trans           &kp F11       &kp F4         &kp F5      &kp F6       &kp F10
+    &trans        &trans         &trans         &trans            &trans           &trans        &kp F1         &kp F2      &kp F3       &bootloader
+                                 &trans         &trans            &trans           &trans        &trans         &trans
             >;
         };
 
     bt_layer {
             bindings = <
-    &bt BT_CLR    &bootloader    &none          &bt BT_SEL 4      &bt_macro_linux 2  &none         &none          &none       &none        &none
-    &bt BT_NXT    &sys_reset     &none          &bt BT_SEL 3      &bt_macro_mac 1    &none         &none          &none       &none        &none
-    &bt BT_PRV    &none          &none          &none             &bt_macro_mac 0    &none         &none          &none       &none        &none
-                                 &trans         &trans            &trans             &trans        &trans         &trans
+    &bt BT_CLR    &bootloader    &none          &bt BT_SEL 4      &bt BT_SEL 2     &none         &none          &none       &none        &none
+    &bt BT_NXT    &sys_reset     &none          &bt BT_SEL 3      &bt BT_SEL 1     &none         &none          &none       &none        &none
+    &bt BT_PRV    &none          &none          &none             &bt BT_SEL 0     &none         &none          &none       &none        &none
+                                 &trans         &trans            &trans           &trans        &trans         &trans
             >;
         };
     };

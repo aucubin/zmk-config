@@ -16,6 +16,9 @@ build selects its keymap via `-DKEYMAP_FILE` in `build.yaml`.
 After editing a keymap, `python3 scripts/align_keymap.py` re-aligns the binding
 columns.
 
+All keymaps assume US International with dead keys on both Mac and Linux
+(Linux runs Toshy), so each has a single base layer.
+
 **Legend:** `X/▸L` tap X, hold layer L · `⌃ ⌥ ⌘ ⇧` home row mod on hold
 (Ctrl, Alt, GUI, Shift) · `⌥r` right Alt · `·` nothing · `boot` bootloader ·
 `rst` reset · `,;` `.:` comma/dot that give `;`/`:` with Shift.
@@ -23,7 +26,7 @@ columns.
 ## swweeep — Colemak-DH
 
 ```
-Base (Mac and Linux identical, Linux only switches the SYM layer)
+Base
 Q    W    F    P    B    | J    L    U    Y    ;
 A⌃   R⌥   S⌘   T⇧   G    | M    N⇧   E⌘   I⌥   O⌃
 Z    X    C    D    V    | K    H    ,    .    /
@@ -37,7 +40,7 @@ boot ·    ·    ·    ·    | ]    }    )    ·    |
 `    ~    _    =    ·    | [    {    (    ·    \
 rst  ·    +    -    ·    | ¨    ß    :    "    '
 ```
-`¨` and `ß`: Option+U / Option+S on Mac, AltGr+Shift+' / AltGr+S on Linux.
+`¨` is the `"` dead key (then type the letter), `ß` is AltGr+S.
 
 ```
 NUM (right thumb)
@@ -55,11 +58,11 @@ NAV (right thumb)
 
 ```
 BT (left thumb)
-CLR  ·    ·    BT4  lin2 | ·    ·    ·    ·    ·
-NXT  ·    ·    BT3  mac1 | ·    ·    ·    ·    ·
-PRV  ·    ·    ·    mac0 | ·    ·    ·    ·    ·
+CLR  ·    ·    BT4  BT2  | ·    ·    ·    ·    ·
+NXT  ·    ·    BT3  BT1  | ·    ·    ·    ·    ·
+PRV  ·    ·    ·    BT0  | ·    ·    ·    ·    ·
 ```
-`macN` / `linN` select Bluetooth profile N and switch to the Mac / Linux base layer.
+`BTn` selects Bluetooth profile n.
 
 **Combos**
 
@@ -74,7 +77,7 @@ PRV  ·    ·    ·    mac0 | ·    ·    ·    ·    ·
 Thumbs, layers and combos follow the zilpzalp, the extra keys are filled in.
 
 ```
-Base (Mac and Linux identical, Linux only switches OS-specific combos)
+Base
 V    W    F    P    B    | J    L    U    Y    ;
 R⌃   S⌥   T⌘   H⇧   K⌥r  | X⌥r  N⇧   A⌘   I⌥   O⌃
 Z    C    G    D    Q    | '    M    ,;   .:   /
@@ -114,9 +117,9 @@ FUN (right thumb)
 
 ```
 BT (left thumb)
-CLR  boot ·    BT4  lin2 | ·    ·    ·    ·    ·
-NXT  rst  ·    BT3  mac1 | ·    ·    ·    ·    ·
-PRV  ·    ·    ·    mac0 | ·    ·    ·    ·    ·
+CLR  boot ·    BT4  BT2  | ·    ·    ·    ·    ·
+NXT  rst  ·    BT3  BT1  | ·    ·    ·    ·    ·
+PRV  ·    ·    ·    BT0  | ·    ·    ·    ·    ·
 ```
 Each half's bootloader/reset sits on a layer held by that half's thumb.
 
@@ -136,11 +139,9 @@ Each half's bootloader/reset sits on a layer held by that half's thumb.
 | Caps lock | W+Y |
 | Backspace | L+U |
 | Delete | U+Y |
-| Delete word | L+Y (Option+BSPC on Mac, Ctrl+BSPC on Linux) |
-| ä / ö / ü | A+E, O+E, U+E |
-| ß | S+Space |
-
-Umlauts and ß use Option+U / Option+S on Mac and AltGr+Shift+' / AltGr+S on Linux.
+| Delete word (Ctrl+BSPC) | L+Y |
+| ä / ö / ü | A+E, O+E, U+E (`"` then the letter) |
+| ß (AltGr+S) | S+Space |
 
 ## zilpzalp — Aptmak
 
