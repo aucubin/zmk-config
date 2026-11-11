@@ -1,0 +1,21 @@
+#include "swweeep_common.dtsi"
+
+// Colemak-DH base layer, built as the swweeep_left-colemak-dh firmware.
+// Thumbs match Aptmak, with Backspace instead of E on the SYM thumb.
+
+/ {
+    keymap {
+        compatible = "zmk,keymap";
+
+    default_layer {
+            bindings = <
+    &kp Q        &kp W       &kp F       &kp P        &kp B          &kp J         &kp L          &kp U       &kp Y       &kp SEMI
+    &hl LCTRL A  &hl LALT R  &hl LGUI S  &hl LSHFT T  &hl RALT G     &hr RALT M    &hr RSHFT N    &hr LGUI E  &hr LALT I  &hr RCTRL O
+    &kp Z        &kp X       &kp C       &kp D        &kp V          &kp K         &kp H          &comsem     &dotcol     &kp FSLH
+                             &lt BT ESC  &lt NUM SQT  &lt NAV SPACE  &lt SYM BSPC  &lt FUN ENTER  &kp TAB
+            >;
+        };
+    };
+};
+
+#include "swweeep_layers.dtsi"

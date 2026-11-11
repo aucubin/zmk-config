@@ -23,6 +23,7 @@ include:
     shield: zilpzalp
   - board: nice_nano_v2
     shield: swweeep_left
+    cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/config/swweeep_colemak.keymap
     artifact-name: swweeep_left-colemak-dh
   - board: nice_nano_v2
     shield: swweeep_left
@@ -30,3 +31,5 @@ include:
     artifact-name: swweeep_left-aptmak
   - board: nice_nano_v2
     shield: swweeep_right
+    # the right half doesn't use the keymap, but the build still needs one
+    cmake-args: -DKEYMAP_FILE=${GITHUB_WORKSPACE}/config/swweeep_colemak.keymap
